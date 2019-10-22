@@ -27,6 +27,7 @@ app.get('/', function (req, res) {
     '/yo/Dr.Rogers <br>' +
     '/fortune <br>' +
     '/fancy/?first=Denise&last=Case <br>' +
+    '/appleproduct <br>' +
     '<br> <br>' +
     'Fork the source code from <a href="https://github.com/denisecase/node-express-app">https://github.com/denisecase/node-express-app</a>'
   )
@@ -82,6 +83,17 @@ app.get('/fortune', (req,res) => {
   }
 })
 
+let products = ['iPhone', 'iPhone 3G', 'iPhone 3GS', 'iPhone 4', 'iPhone 4S', 'iPhone 5', 'iPhone 5C', 'iPhone 5S', 'iPhone 6',
+  'iPhone 6 Plus', 'iPhone 6S', 'iPhone 6S Plus', 'iPhone SE', 'iPhone 7', 'iPhone 7 Plus', 'iPhone 8', 'iPhone 8 Plus', 'iPhone X', 
+  'iPhone Xs', 'iPhone Xs Max', 'iPhone Xʀ', 'iPhone 11', 'iPhone 11 Pro', 'iPhone 11 Pro Max', 'iPad', 'iPad 2', 'iPad 3', 'iPad 4',
+  'iPad 5', 'iPad 6', 'iPad Air', 'iPad Air 2', 'iPad Air 3', 'iPad Mini', 'iPad Mini 2', 'iPad Mini 3', 'iPad Mini 4', 'iPad Mini 5',
+  'iPad Pro 9.7-inch', 'iPad Pro 10.5-inch', 'iPad Pro 11-inch', 'iPad Pro 12.9-inch', 'iPad Pro 12.9-inch 2', 'iPad Pro 12.9-inch 3', 
+  'Apple Watch', 'Apple Watch Series 1', 'Apple Watch Series 2', 'Apple Watch Series 3', 'Apple Watch Series 4', 'Apple Watch Series 5']
+
+app.get('/appleproduct', (req, res) => {
+  res.send(`Apple Product: ${products[randomInt(0, products.length)]}`)
+})
+
 // Use middleware to handle all non-managed routes (e.g. /xyz)
 // https://expressjs.com/en/api.html#req.originalUrl
 app.use((req, res, next) => {
@@ -99,6 +111,7 @@ app.listen(port, hostname, () => {
   console.log(`   Try /greeting/yourname`)
   console.log(`   Try /yo/Dr.Rogers`)
   console.log(`   Try /fancy/?first=Denise&last=Case`)
+  console.log('   Try /appleproduct')
   console.log('\n Hit CTRL-C CTRL-C to stop\n')
 })
 
